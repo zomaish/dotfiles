@@ -31,3 +31,8 @@ alias localip="ipconfig getifaddr en1"
 
 # Copy my public key to the pasteboard
 alias pubkey="more ~/.ssh/id_rsa.pub | pbcopy | printf '=> Public key copied to pasteboard.\n'"
+
+# Git proxies
+alias gitb="git config --global http.proxy http://bproxy.cfe.bloomberg.com:80"
+alias gitp="git config --global http.proxy http://proxy.bloomberg.com:80"
+
