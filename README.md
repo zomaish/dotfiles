@@ -16,6 +16,11 @@ This will overwrite any existing dotfiles you have, so back them up first! You c
 
         $ ~/.dotfiles/bin/dotfiles
 
+## Theme
+
+I am using this with the Solarized Dark theme for OSX Terminal found here:
+* [http://ethanschoonover.com/solarized](http://ethanschoonover.com/solarized)
+
 ## Acknowledgements
 Most of the code was taken from:
 * [@necolas](https://github.com/necolas) (Nicholas Gallagher)
