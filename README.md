@@ -1,9 +1,11 @@
-# Dotfiles (Nicolas Gallagher)
+# Dotfiles (Eric Herdzik)
 
 My OS X dotfiles.
 
 
 ## How to install
+
+This will overwrite any existing dotfiles you have, so back them up first! You can store user-specific configs in `~/.bash_profile.local`.
 
 1. Clone into ~/.dotfiles
 
