@@ -18,40 +18,17 @@ fi
 
 cd ${DOTFILES_DIRECTORY}
 
-source ./lib/help
-source ./lib/list
 source ./lib/utils
 source ./lib/brew
-
-# Help text
-if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-    run_help
-    exit
-fi
 
 # Test for known flags
 for opt in $@
 do
     case $opt in
-        --no-packages) no_packages=true ;;
         --no-sync) no_sync=true ;;
         -*|--*) e_warning "Warning: invalid option $opt" ;;
     esac
 done
-
-# Before relying on Homebrew, check that packages can be compiled
-if ! type_exists 'gcc'; then
-    e_error "The XCode Command Line Tools must be installed first."
-    printf "  Download them from: https://developer.apple.com/downloads\n"
-    printf "  Then run: bash ~/.dotfiles/bin/dotfiles\n"
-    exit 1
-fi
-
-# Check for Homebrew
-if ! type_exists 'brew'; then
-    e_header "Installing Homebrew..."
-    ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go)"
-fi
 
 # Check for git
 if ! type_exists 'git'; then
@@ -83,15 +60,6 @@ else
     git pull --rebase origin master
     # Update submodules
     git submodule update --recursive --init --quiet
-fi
-
-# Install and update packages
-if [[ $no_packages ]]; then
-    printf "Skipped package installations.\n"
-else
-    printf "Updating packages...\n"
-    # Install Homebrew formulae
-    run_brew
 fi
 
 link() {
@@ -137,12 +105,3 @@ else
     exit 1
 fi
 
-# Ask before potentially overwriting OS X defaults
-seek_confirmation "Warning: This step may modify your OS X system defaults."
-
-if is_confirmed; then
-    bash ./bin/osxdefaults
-    e_success "OS X settings updated! You may need to restart."
-else
-    printf "Skipped OS X settings update.\n"
-fi
