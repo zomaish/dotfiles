@@ -25,3 +25,9 @@ export MANPAGER="less -X"
 # Make new shells get the history lines from all previous
 # shells instead of the default "last window closed" history
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+# Proxies
+export PROXY="http://proxy.bloomberg.com:80"
+export BPROXY="http://bproxy.cfe.bloomberg.com:80"
+export HTTP_PROXY=$PROXY
+
