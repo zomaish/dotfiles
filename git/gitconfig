@@ -61,8 +61,11 @@
     prompt = false
 
 [http]
-    proxy = http://bproxy.cfe.bloomberg.com:80
+    proxy = http://proxy.bloomberg.com:80
     sslVerify = false
+
+[http "https://github.dev.bloomberg.com/"]
+    proxy = http://bproxy.cfe.bloomberg.com:80
 
 [pretty]
     # tut: http://gitimmersion.com/lab_10.html
