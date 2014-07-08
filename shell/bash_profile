@@ -2,6 +2,12 @@
 
 # bash_profile
 
+# set vi as command line editor
+set -o vi
+
+# ls color support
+export CLICOLOR=1
+
 # set 256 color profile where possible
 if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
     export TERM=gnome-256color
@@ -24,6 +30,7 @@ load_dotfiles() {
         $HOME/.dotfiles/shell/functions/* # Functions
         $HOME/.dotfiles/shell/bash_prompt # Custom bash prompt
         $HOME/.dotfiles/shell/bash_paths # Path modifications
+        $HOME/.dotfiles/git/git-completion.bash # Git completion
         $(brew --prefix)/etc/bash_completion # Bash completion (installed via Homebrew)
         $HOME/.bash_profile.local # Local and private settings not under version control (e.g. git credentials)
     )
@@ -33,6 +40,7 @@ load_dotfiles() {
     do
         if [[ -r ${files[$index]} ]]; then
             source ${files[$index]}
+            echo ${files[$index]}
         fi
     done
 }

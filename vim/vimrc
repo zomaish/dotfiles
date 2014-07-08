@@ -6,8 +6,6 @@
 " Disable Vi compatibility
 set nocompatible
 
-" Point to location of pathogen submodule (since it's not in .vim/autoload)
-silent! runtime bundle/vim-pathogen/autoload/pathogen.vim
 " Call pathogen plugin management
 silent! call pathogen#infect()
 
@@ -20,18 +18,21 @@ if has("autocmd")
     " Languages with specific tabs/space requirements
     autocmd FileType make setlocal ts=4 sts=4 sw=4 noexpandtab
     " Automatically strip trailing whitespace on file save
-    autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt :call StripTrailingWhitespace()
+    "autocmd BufWritePre *.css,*.html,*.js,*.json,*.md,*.php,*.py,*.rb,*.scss,*.sh,*.txt :call s:StripTrailingWhitespace()
 endif
 
 if has("syntax")
     " Enable syntax highlighting
     syntax enable
     " Set 256 color terminal support
-    set t_Co=256
+    "set t_Co=256
+    "let g:solarized_termcolors=256
+    "set term=xterm-256color
+    "let g_solarized_termtrans=1
     " Set dark background
     set background=dark
     " Set colorscheme
-    silent! colorscheme solarized
+    colorscheme solarized
 endif
 
 if has("cmdline_info")
@@ -81,8 +82,14 @@ if has("extra_search")
     set smartcase
 endif
 
+" Open vertical split to the right
+set splitbelow splitright
+
 " Show hidden files when using ctrlp
 let g:ctrlp_show_hidden = 1
+
+" Set hidden tabs
+set hidden
 
 " Change mapleader
 let mapleader=","
@@ -130,13 +137,19 @@ endif
 set viminfo+=n$HOME/.vim/.viminfo
 
 " Strip trailing whitespace (,$)
-noremap <leader>$ :call StripTrailingWhitespace()<CR>
+noremap <leader>$ :call s:StripTrailingWhitespace()<CR>
 
 " Faster viewport scrolling (3 lines at a time)
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
 vnoremap <C-e> 3<C-e>
 vnoremap <C-y> 3<C-y>
+
+" NERDTree mappings
+nnoremap <C-n> :NERDTreeToggle<cr>
+
+" Speed up CTRL-P
+let g:ctrlp_custom_ignore = 'node_modules\|git\|DS_STORE\|vendor'
 
 " Make `Y` work from the cursor to the end of line (which is more logical)
 nnoremap Y y$

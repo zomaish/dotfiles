@@ -24,8 +24,8 @@ prompt_git() {
             # ensure index is up to date
             git update-index --really-refresh  -q &>/dev/null
 
-            # check for uncommitted changes in the index
-#            if ! $(git diff --quiet --ignore-submodules --cached); then
+#           # check for uncommitted changes in the index
+#           if ! $(git diff --quiet --ignore-submodules --cached); then
 #               s="$s+";
 #           fi
 
@@ -35,7 +35,7 @@ prompt_git() {
 #           fi
 
 #           # check for untracked files
-#           if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+#           if [ -n "$(git ls-files --others --ignore submodules --exclude-standard)" ]; then
 #               s="$s?";
 #           fi
 
