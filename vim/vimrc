@@ -148,6 +148,8 @@ vnoremap <C-y> 3<C-y>
 " NERDTree mappings
 nnoremap <C-n> :NERDTreeToggle<cr>
 
+set clipboard=unnamed
+
 " Speed up CTRL-P
 let g:ctrlp_custom_ignore = 'node_modules\|git\|DS_STORE\|vendor'
 

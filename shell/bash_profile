@@ -40,7 +40,6 @@ load_dotfiles() {
     do
         if [[ -r ${files[$index]} ]]; then
             source ${files[$index]}
-            echo ${files[$index]}
         fi
     done
 }
