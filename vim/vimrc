@@ -145,6 +145,9 @@ nnoremap <C-y> 3<C-y>
 vnoremap <C-e> 3<C-e>
 vnoremap <C-y> 3<C-y>
 
+" Ack mapping
+nnoremap <C-a><C-p> :Ack<space>--js<space>
+
 " NERDTree mappings
 nnoremap <C-n> :NERDTreeToggle<cr>
 
